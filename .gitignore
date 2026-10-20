@@ -1,0 +1,14 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Réglages locaux de Claude Code
+.claude/
+# Visuels sources et chartes d'inspiration : utiles en local, inutiles (et lourds) dans le dépôt public
+images/
+inspiration/

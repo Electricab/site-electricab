@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #2563eb;
+  --color-brand-light: #3b82f6;
+  --color-brand-dark: #1d4ed8;
+  --color-bg-main: #ffffff;
+  --color-bg-card: #f1f5f9;
+  --color-ink: #161c2b;
+  /* Charte typographique : trois polices, chacune avec un rôle précis.
+     Textes courants, boutons, étiquettes en capitales espacées */
+  --font-sans: "Inter", sans-serif;
+  /* Grands titres (h1, h2) : police large et géométrique, dans l'esprit du logo */
+  --font-display: "Michroma", sans-serif;
+  /* Jura : phrases d'accroche en léger (font-light), petits titres h3/h4 en semi-gras (font-semibold) */
+  --font-accroche: "Jura", sans-serif;
+}
+
+/* Écran assez large et équipé d'une souris : les effets de survol y sont possibles.
+   Sur téléphone et tablette tactile, le contenu reste affiché en permanence. */
+@custom-variant survol (@media (hover: hover) and (min-width: 48rem));
+
+body {
+  background-color: var(--color-bg-main);
+  color: var(--color-ink);
+}
+
