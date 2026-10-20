@@ -21,7 +21,7 @@ type Props = { surtitre: string; titre: string; accroche: string; langue?: Langu
 export function PageLegale({ surtitre, titre, accroche, langue = 'fr', children }: Props) {
   useLangueDocument(langue);
   return (
-    <main className="pt-24 pb-16 min-h-screen bg-bg-main flex flex-col items-center">
+    <main className="pt-32 lg:pt-24 pb-16 min-h-screen bg-bg-main flex flex-col items-center">
       <section className="w-full relative min-h-[25rem] md:min-h-[22rem] py-8 bg-bg-card border-b border-slate-200 flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img

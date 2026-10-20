@@ -122,7 +122,7 @@ export default function Home({ langue = 'fr' }: { langue?: Langue }) {
   return (
     <main>
       {/* Hero Section */}
-      <section className="w-full relative mt-24 min-h-[25rem] md:min-h-[22rem] py-8 bg-bg-card border-b border-slate-200 flex flex-col items-center justify-center overflow-hidden">
+      <section className="w-full relative mt-32 lg:mt-24 min-h-[25rem] md:min-h-[22rem] py-8 bg-bg-card border-b border-slate-200 flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={`${import.meta.env.BASE_URL}bandeau.svg`}
@@ -234,7 +234,7 @@ export default function Home({ langue = 'fr' }: { langue?: Langue }) {
       </section>
 
       {/* Services Section : un groupe par service, image une fois à gauche, une fois à droite */}
-      <section id="services" className="py-32 px-4 sm:px-8 bg-bg-main relative overflow-hidden scroll-mt-20">
+      <section id="services" className="py-32 px-4 sm:px-8 bg-bg-main relative overflow-hidden scroll-mt-32 lg:scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
@@ -300,7 +300,7 @@ export default function Home({ langue = 'fr' }: { langue?: Langue }) {
       </section>
 
       {/* Votre interlocuteur (anciennement la page À propos ; adresse /#qui-je-suis conservée) */}
-      <section id="qui-je-suis" className="py-32 px-4 sm:px-8 bg-bg-card scroll-mt-20">
+      <section id="qui-je-suis" className="py-32 px-4 sm:px-8 bg-bg-card scroll-mt-32 lg:scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
@@ -352,7 +352,7 @@ export default function Home({ langue = 'fr' }: { langue?: Langue }) {
            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-brand to-transparent"></div>
 
            {/* Même en-tête que les autres sections : titre, filet bleu, sous-titre en Jura */}
-           <div id="devis" className="text-center mb-16 scroll-mt-28">
+           <div id="devis" className="text-center mb-16 scroll-mt-36 lg:scroll-mt-28">
              <h2 className="text-2xl md:text-4xl leading-tight font-display text-ink inline-block relative">
                {T.devisTitre}
                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-brand"></div>

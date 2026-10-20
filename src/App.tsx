@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { Lightbulb, Share2, Zap, Menu, Phone, X } from 'lucide-react';
+import { Lightbulb, Share2, Zap, Phone } from 'lucide-react';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import MentionsLegales from './pages/MentionsLegales';
@@ -66,17 +66,15 @@ function RemonterEnHaut() {
 }
 
 function Header() {
-  const [open, setOpen] = useState(false);
   const location = useLocation();
   const langue = useLangue();
   const T = TEXTES_ENTETE[langue];
-
-  const close = () => setOpen(false);
+  const actif = (to: string) => location.pathname === cheminLangue(to, langue);
 
   return (
-    <>
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between gap-3 px-4 sm:px-6 md:px-12 lg:px-6 xl:px-12 py-5 bg-bg-main/80 backdrop-blur-md border-b border-slate-200">
-        <LienLangue to="/" onClick={close} className="shrink-0">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-bg-main/80 backdrop-blur-md border-b border-slate-200">
+      <div className="flex items-center justify-between gap-3 px-4 sm:px-6 md:px-12 lg:px-6 xl:px-12 py-4 lg:py-5">
+        <LienLangue to="/" className="shrink-0">
           <img src={`${import.meta.env.BASE_URL}logo-electricab-transparent.png`} alt="ELECTRICAB" className="h-3 min-[360px]:h-3.5 sm:h-5 w-auto" />
         </LienLangue>
 
@@ -91,51 +89,35 @@ function Header() {
         </div>
 
         <div className="flex items-center gap-3 sm:gap-4">
-        {/* Appel d'urgence : surtout utile sur mobile. Masqué entre 1024 et 1280 px, où le menu complet prend la place. */}
-        <a href="tel:+33616267091" className="group flex lg:hidden xl:flex flex-col items-end text-right">
-          <span className="text-[10px] min-[360px]:text-[11px] leading-4 text-slate-600 whitespace-nowrap">{T.urgence}</span>
-          <span className="flex items-center gap-1.5 text-[13px] min-[360px]:text-sm leading-5 font-bold text-brand group-hover:text-brand-dark transition-colors whitespace-nowrap">
-            <Phone size={13} strokeWidth={2.5} aria-hidden="true" /> {T.numero}
-          </span>
-        </a>
+          {/* Appel d'urgence : surtout utile sur mobile. Masqué entre 1024 et 1280 px, où le menu complet prend la place. */}
+          <a href="tel:+33616267091" className="group flex lg:hidden xl:flex flex-col items-end text-right">
+            <span className="text-[10px] min-[360px]:text-[11px] leading-4 text-slate-600 whitespace-nowrap">{T.urgence}</span>
+            <span className="flex items-center gap-1.5 text-[13px] min-[360px]:text-sm leading-5 font-bold text-brand group-hover:text-brand-dark transition-colors whitespace-nowrap">
+              <Phone size={13} strokeWidth={2.5} aria-hidden="true" /> {T.numero}
+            </span>
+          </a>
 
-        <LienLangue to="/#devis" className="hidden sm:inline-block bg-brand hover:bg-brand-dark active:bg-brand-dark text-white font-bold px-6 lg:px-4 xl:px-6 py-3 rounded-none text-xs uppercase tracking-widest transition-colors whitespace-nowrap">
-          {T.devis}
-        </LienLangue>
-
-        {/* Mobile hamburger */}
-        <button
-          className="lg:hidden text-brand p-1 -mr-1"
-          onClick={() => setOpen(o => !o)}
-          aria-label="Menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          <LienLangue to="/#devis" className="hidden sm:inline-block bg-brand hover:bg-brand-dark active:bg-brand-dark text-white font-bold px-6 lg:px-4 xl:px-6 py-3 rounded-none text-xs uppercase tracking-widest transition-colors whitespace-nowrap">
+            {T.devis}
+          </LienLangue>
         </div>
+      </div>
 
-      {/* Mobile dropdown menu, accroché sous l'en-tête quelle que soit sa hauteur */}
-      {open && (
-        <div className="absolute top-full left-0 right-0 z-40 lg:hidden bg-bg-main/95 backdrop-blur-md border-b border-slate-200">
-          <nav className="flex flex-col px-6 py-4 gap-1">
-            {navLinks.map(({ to, label }) => (
-              <LienLangue
-                key={to}
-                to={to}
-                onClick={close}
-                className={`py-3 text-sm font-bold uppercase tracking-widest border-b border-slate-200 transition-colors ${location.pathname === cheminLangue(to, langue) ? 'text-brand' : 'text-slate-600 hover:text-ink'}`}
-              >
-                {label[langue]}
-              </LienLangue>
-            ))}
-            <ChoixLangue onChoix={close} className="py-4" />
-            <LienLangue to="/#devis" onClick={close} className="sm:hidden mt-2 text-center bg-brand hover:bg-brand-dark active:bg-brand-dark text-white font-bold px-6 py-3 text-xs uppercase tracking-widest transition-colors">
-              {T.devis}
+      {/* Téléphone et tablette : les deux onglets toujours visibles sous le logo, avec les drapeaux à droite */}
+      <div className="lg:hidden flex items-stretch border-t border-slate-200 px-4 sm:px-6 md:px-12">
+        <nav className="flex flex-1">
+          {navLinks.map(({ to, label }) => (
+            <LienLangue
+              key={to} to={to} aria-current={actif(to) ? 'page' : undefined}
+              className={`flex-1 text-center py-3 text-[11px] min-[360px]:text-xs font-bold uppercase tracking-wider min-[360px]:tracking-widest whitespace-nowrap border-b-2 -mb-px transition-colors ${actif(to) ? 'text-brand border-brand' : 'text-slate-600 border-transparent hover:text-ink'}`}
+            >
+              {label[langue]}
             </LienLangue>
-          </nav>
-        </div>
-      )}
-      </header>
-    </>
+          ))}
+        </nav>
+        <ChoixLangue className="pl-3 ml-2 border-l border-slate-200" />
+      </div>
+    </header>
   );
 }
 
