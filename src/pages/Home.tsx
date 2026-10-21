@@ -43,7 +43,7 @@ const TEXTES = {
     parcours2: 'Passionné d’électricité depuis toujours, il s’est reconverti et a obtenu le titre professionnel d’Électricien d’équipement du bâtiment. Installé à Senlis, il a fondé Electricab et intervient dans la région de Senlis et Chantilly, avec un esprit structuré, un planning clair et une communication transparente.',
     devisTitre: 'Demander un devis',
     devisTexte: 'Confiez-nous votre projet pour une étude personnalisée et détaillée.',
-    sujet: 'Nouvelle demande de devis depuis electricab.fr (page L’entreprise)',
+    sujet: 'Nouvelle demande de devis depuis electricab.fr – {nom} – (page L’entreprise)',
   },
   en: {
     surtitre: 'Your electrician in the Oise',
@@ -80,7 +80,7 @@ const TEXTES = {
     parcours2: 'Passionate about electrical work for as long as he can remember, he retrained and earned the French professional qualification of building electrician (Électricien d’équipement du bâtiment). Based in Senlis, he founded Electricab and works across the Senlis and Chantilly area, bringing a structured approach, a clear schedule and transparent communication to every project.',
     devisTitre: 'Request a quote',
     devisTexte: 'Tell us about your project for a personalised, detailed assessment.',
-    sujet: 'Nouvelle demande de devis depuis electricab.fr (page d’accueil, version anglaise)',
+    sujet: 'Nouvelle demande de devis depuis electricab.fr – {nom} – (page L’entreprise, version anglaise)',
   },
 };
 

@@ -32,7 +32,7 @@ const TEXTES = {
     dimanche: 'Dimanche', ferme: 'Fermé',
     formulaireTitre: 'Envoyez-nous un message',
     formulaireTexte: 'Confiez-nous votre projet pour une étude personnalisée.',
-    sujet: 'Nouvelle demande de contact depuis electricab.fr (page Contact)',
+    sujet: 'Nouvelle demande de contact depuis electricab.fr – {nom} – (page Contact)',
   },
   en: {
     surtitre: 'Contact us',
@@ -50,7 +50,7 @@ const TEXTES = {
     dimanche: 'Sunday', ferme: 'Closed',
     formulaireTitre: 'Send us a message',
     formulaireTexte: "Tell us about your project and we'll prepare a tailored quote.",
-    sujet: 'Nouvelle demande de contact depuis electricab.fr (page Contact, version anglaise)',
+    sujet: 'Nouvelle demande de contact depuis electricab.fr – {nom} – (page Contact, version anglaise)',
   },
 };
 

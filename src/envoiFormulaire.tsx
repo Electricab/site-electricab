@@ -28,7 +28,9 @@ async function envoyer(sujet: string, form: HTMLFormElement): Promise<void> {
   for (const [cle, valeur] of formData) {
     if (cle !== CHAMP_ANTI_ROBOT && typeof valeur === 'string') champs[cle] = valeur;
   }
-  await envoyerEmail(sujet, champs, formData.has(CHAMP_ANTI_ROBOT));
+  // « {nom} » dans l'objet est remplacé par le nom saisi par le visiteur
+  const nom = String(formData.get('Nom') ?? '').trim() || '(sans nom)';
+  await envoyerEmail(sujet.replace('{nom}', nom), champs, formData.has(CHAMP_ANTI_ROBOT));
 }
 
 // Envoie un e-mail sur contact@electricab.fr avec les champs donnés, dans l'ordre (« nom du champ : valeur »).
